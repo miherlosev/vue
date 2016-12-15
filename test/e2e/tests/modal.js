@@ -6,7 +6,8 @@ fixture `Modal`
 const modalPage = new ModalPage();
 
 test('modal', async t => {
-    await t.click(modalPage.showModalBtn)
+    await t
+        .click(modalPage.showModalBtn)
         .expect(modalPage.modal.mainElement.exists).ok()
         .expect(modalPage.modal.wrapper.exists).ok()
         .expect(modalPage.modal.container.exists).ok()
@@ -16,7 +17,8 @@ test('modal', async t => {
         .expect(modalPage.modal.container.body.innerText).contains('default body')
         .expect(modalPage.modal.container.footer.innerText).contains('default footer');
 
-    await t.click(modalPage.modal.container.footer.defaultButton)
+    await t
+        .click(modalPage.modal.container.footer.defaultButton)
         .expect(modalPage.modal.mainElement.exists).ok()
         .expect(modalPage.modal.mainElement.hasClass('modal-leave-active')).ok()
         .expect(modalPage.modal.mainElement.exists).notOk();

@@ -7,10 +7,12 @@ fixture `Markdown`
 const markdownPage = new MarkdownPage();
 
 test('markdown', async t => {
-    await t.expect(markdownPage.src.value).eql('# hello')
+    await t
+        .expect(markdownPage.src.value).eql('# hello')
         .expect(await getInnerHtml(markdownPage.result)).contains('<h1 id="hello">hello</h1>');
 
-    await t.typeText(markdownPage.src, '\n## foo\n\n- bar\n- baz', { replace: true })
+    await t
+        .typeText(markdownPage.src, '\n## foo\n\n- bar\n- baz', { replace: true })
         .expect(await getInnerHtml(markdownPage.result)).contains('<h1 id="hello">hello</h1>');
 
     await t.wait(1500);

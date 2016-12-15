@@ -104,10 +104,10 @@ export class TodomvcPage {
         this.main                      = Selector('.main');
         this.main.allItems             = this.main.find('li.todo');
         this.main.completedItems       = this.main.find('li.todo.completed');
-        this.main.allItems.getLabel    = (index) => this.main.allItems.nth(index).find('label');
-        this.main.allItems.getCheckbox = (index) => this.main.allItems.nth(index).find('.toggle');
-        this.main.allItems.getEdit     = (index) => this.main.allItems.nth(index).find('.edit');
-        this.main.allItems.getDelete   = (index) => this.main.allItems.nth(index).find('.destroy');
+        this.main.allItems.getLabel    = index => this.main.allItems.nth(index).find('label');
+        this.main.allItems.getCheckbox = index => this.main.allItems.nth(index).find('.toggle');
+        this.main.allItems.getEdit     = index => this.main.allItems.nth(index).find('.edit');
+        this.main.allItems.getDelete   = index => this.main.allItems.nth(index).find('.destroy');
         this.main.toggleAll            = this.main.find('.toggle-all');
 
         this.footer                        = Selector('.footer');
@@ -136,7 +136,7 @@ export class TreePage {
         this.allAddItems     = Selector('.add');
         this.allChildFolders = this.allItems.find('ul');
 
-        this.createModelFromNode = (node) => new TreeNode(node);
+        this.createModelFromNode = node => new TreeNode(node);
         this.root                = Selector('#demo');
         this.topLevelRoot        = this.createModelFromNode(this.root.child('li'));
     }

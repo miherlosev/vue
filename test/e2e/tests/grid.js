@@ -8,7 +8,8 @@ fixture `Grid`
 const gridPage = new GridPage();
 
 test('grid', async t => {
-    await t.expect(gridPage.table.find('th').count).eql(2)
+    await t
+        .expect(gridPage.table.find('th').count).eql(2)
         .expect(gridPage.table.find('th.active').count).eql(0)
         .expect(gridPage.table.find('th:nth-child(1)').textContent).contains('Name')
         .expect(gridPage.table.find('th:nth-child(2)').textContent).contains('Power');
@@ -29,7 +30,8 @@ test('grid', async t => {
     await t.typeText(gridPage.query, 'infinity');
     await assertTable(t, gridPage.table, gridManipulationResults.filterByName);
 
-    await t.pressKey('ctrl+a delete')
+    await t
+        .pressKey('ctrl+a delete')
         .expect(gridPage.noMatchesFound.count).eql(0)
         .typeText(gridPage.query, 'stringthatdoesnotexistanywhere')
         .expect(gridPage.noMatchesFound.count).eql(1);

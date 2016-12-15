@@ -11,7 +11,8 @@ server.listen(8080);
 createTestCafe('localhost', 1337, 1338)
     .then(function (testCafe) {
         return testCafe.createRunner();
-    }).then(function (runner) {
+    })
+    .then(function (runner) {
         // NOTE: https://github.com/DevExpress/testcafe/issues/980
         return runner.src([
             'test/e2e/tests/commits.js',
@@ -26,10 +27,12 @@ createTestCafe('localhost', 1337, 1338)
             .browsers('chrome')
             .reporter('spec')
             .run();
-    }).then(function (failed) {
+    })
+    .then(function (failed) {
         server.close();
         process.exit(failed);
-    }).catch(function (err) {
+    })
+    .catch(function (err) {
         console.log('Uhandled error');
         console.log(err);
     });
