@@ -5,35 +5,37 @@ import gridManipulationResults from '../grid-manipulation-results';
 fixture `Grid`
     .page('http://localhost:8080/examples/grid/');
 
-const gridPage = new GridPage();
+const page                             = new GridPage();
+const { table, query, noMatchesFound } = page;
 
 test('grid', async t => {
     await t
-        .expect(gridPage.table.find('th').count).eql(2)
-        .expect(gridPage.table.find('th.active').count).eql(0)
-        .expect(gridPage.table.find('th:nth-child(1)').textContent).contains('Name')
-        .expect(gridPage.table.find('th:nth-child(2)').textContent).contains('Power');
-    await assertTable(t, gridPage.table, gridManipulationResults.defaultSort);
+        .expect(table.find('th').count).eql(2)
+        .expect(table.find('th.active').count).eql(0)
+        .expect(table.find('th:nth-child(1)').textContent).contains('Name')
+        .expect(table.find('th:nth-child(2)').textContent).contains('Power');
+    await assertTable(t, table, gridManipulationResults.defaultSort);
 
-    await t.click(gridPage.table.find('th').nth(0));
-    await assertTable(t, gridPage.table, gridManipulationResults.byNameDesc);
+    await t.click(table.find('th').nth(0));
+    await assertTable(t, table, gridManipulationResults.byNameDesc);
 
-    await t.click(gridPage.table.find('th').nth(1));
-    await assertTable(t, gridPage.table, gridManipulationResults.byPowerAsc);
+    await t.click(table.find('th').nth(1));
+    await assertTable(t, table, gridManipulationResults.byPowerAsc);
 
-    await t.click(gridPage.table.find('th').nth(1));
-    await assertTable(t, gridPage.table, gridManipulationResults.byPowerDesc);
+    await t.click(table.find('th').nth(1));
+    await assertTable(t, table, gridManipulationResults.byPowerDesc);
 
-    await t.click(gridPage.table.find('th').nth(0));
-    await assertTable(t, gridPage.table, gridManipulationResults.byNameAsc);
+    await t.click(table.find('th').nth(0));
+    await assertTable(t, table, gridManipulationResults.byNameAsc);
 
-    await t.typeText(gridPage.query, 'infinity');
-    await assertTable(t, gridPage.table, gridManipulationResults.filterByName);
+    await t.typeText(query, 'infinity');
+    await assertTable(t, table, gridManipulationResults.filterByName);
 
     await t
         .pressKey('ctrl+a delete')
-        .expect(gridPage.noMatchesFound.count).eql(0)
-        .typeText(gridPage.query, 'stringthatdoesnotexistanywhere')
-        .expect(gridPage.noMatchesFound.count).eql(1);
+        .expect(noMatchesFound.count).eql(0)
+
+        .typeText(query, 'stringthatdoesnotexistanywhere')
+        .expect(noMatchesFound.count).eql(1);
 });
 

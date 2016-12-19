@@ -3,25 +3,25 @@ import { CommitsPage } from '../page-models';
 fixture `Commits`
     .page('http://localhost:8080/examples/commits/');
 
-const commitsPage = new CommitsPage();
+const page                = new CommitsPage();
+const { branch, commits } = page;
 
 test('commits', async t => {
     await t
-        .expect(commitsPage.branch.inputs.count).eql(2)
-        .expect(commitsPage.branch.labels.count).eql(2)
-        .expect(commitsPage.branch.labelForMaster.textContent).contains('master')
-        .expect(commitsPage.branch.labelForDev.textContent).contains('dev')
-        .expect(commitsPage.branch.master.checked).ok()
-        .expect(commitsPage.branch.dev.checked).notOk()
-        .expect(commitsPage.branch.current.textContent).contains('vuejs/vue@master')
-        .expect(commitsPage.commits.allItems.count).eql(3)
-        .expect(commitsPage.commits.ids.count).eql(3)
-        .expect(commitsPage.commits.messages.count).eql(3)
+        .expect(branch.inputs.count).eql(2)
+        .expect(branch.labels.count).eql(2)
+        .expect(branch.labelForMaster.textContent).contains('master')
+        .expect(branch.labelForDev.textContent).contains('dev')
+        .expect(branch.master.checked).ok()
+        .expect(branch.dev.checked).notOk()
+        .expect(branch.current.textContent).contains('vuejs/vue@master')
+        .expect(commits.allItems.count).eql(3)
+        .expect(commits.ids.count).eql(3)
+        .expect(commits.messages.count).eql(3)
 
-    await t
-        .click(commitsPage.branch.dev)
-        .expect(commitsPage.branch.current.textContent).contains('vuejs/vue@dev')
-        .expect(commitsPage.commits.allItems.count).eql(3)
-        .expect(commitsPage.commits.ids.count).eql(3)
-        .expect(commitsPage.commits.messages.count).eql(3);
+        .click(branch.dev)
+        .expect(branch.current.textContent).contains('vuejs/vue@dev')
+        .expect(commits.allItems.count).eql(3)
+        .expect(commits.ids.count).eql(3)
+        .expect(commits.messages.count).eql(3);
 });
