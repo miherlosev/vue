@@ -1,10 +1,10 @@
-import { ModalPage } from '../page-models';
+import { ModalPage } from '../page-models'
 
 fixture `Modal`
-    .page('http://localhost:8080/examples/modal/');
+    .page('http://localhost:8080/examples/modal/')
 
-const page                    = new ModalPage();
-const { showModalBtn, modal } = page;
+const page = new ModalPage()
+const { showModalBtn, modal } = page
 
 test('modal', async t => {
     await t
@@ -21,5 +21,5 @@ test('modal', async t => {
         .click(modal.defaultButton)
         .expect(modal.mainElement.exists).ok()
         .expect(modal.mainElement.hasClass('modal-leave-active')).ok()
-        .expect(modal.mainElement.exists).notOk();
-});
+        .expect(modal.mainElement.exists).notOk()
+})

@@ -1,5 +1,9 @@
 {
   "rules": {
     "indent": 0
+  },
+  "globals": {
+    "test": true,
+    "fixture": true
   }
 }

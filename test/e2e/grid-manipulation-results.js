@@ -1,29 +1,29 @@
 export default {
-    'defaultSort':  [
+    'defaultSort': [
         { name: 'Chuck Norris', power: Infinity },
         { name: 'Bruce Lee', power: 9000 },
         { name: 'Jackie Chan', power: 7000 },
         { name: 'Jet Li', power: 8000 }
     ],
-    'byNameDesc':   [
+    'byNameDesc': [
         { name: 'Jet Li', power: 8000 },
         { name: 'Jackie Chan', power: 7000 },
         { name: 'Chuck Norris', power: Infinity },
         { name: 'Bruce Lee', power: 9000 }
     ],
-    'byPowerAsc':   [
+    'byPowerAsc': [
         { name: 'Chuck Norris', power: Infinity },
         { name: 'Bruce Lee', power: 9000 },
         { name: 'Jet Li', power: 8000 },
         { name: 'Jackie Chan', power: 7000 }
     ],
-    'byPowerDesc':  [
+    'byPowerDesc': [
         { name: 'Jackie Chan', power: 7000 },
         { name: 'Jet Li', power: 8000 },
         { name: 'Bruce Lee', power: 9000 },
         { name: 'Chuck Norris', power: Infinity }
     ],
-    'byNameAsc':    [
+    'byNameAsc': [
         { name: 'Bruce Lee', power: 9000 },
         { name: 'Chuck Norris', power: Infinity },
         { name: 'Jackie Chan', power: 7000 },
@@ -32,4 +32,4 @@ export default {
     'filterByName': [
         { name: 'Chuck Norris', power: Infinity }
     ]
-};
+}

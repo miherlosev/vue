@@ -1,10 +1,10 @@
-import { CommitsPage } from '../page-models';
+import { CommitsPage } from '../page-models'
 
 fixture `Commits`
-    .page('http://localhost:8080/examples/commits/');
+    .page('http://localhost:8080/examples/commits/')
 
-const page                = new CommitsPage();
-const { branch, commits } = page;
+const page = new CommitsPage()
+const { branch, commits } = page
 
 test('commits', async t => {
     await t
@@ -23,5 +23,5 @@ test('commits', async t => {
         .expect(branch.current.textContent).contains('vuejs/vue@dev')
         .expect(commits.allItems.count).eql(3)
         .expect(commits.ids.count).eql(3)
-        .expect(commits.messages.count).eql(3);
-});
+        .expect(commits.messages.count).eql(3)
+})
