@@ -3,7 +3,7 @@
     "indent": 0
   },
   "globals": {
-    "test": true,
-    "fixture": true
+    "test": false,
+    "fixture": false
   }
 }
