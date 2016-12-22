@@ -1,9 +1,7 @@
 {
+  "plugins": ["testcafe"],
+  "extends": "plugin:testcafe/recommended",
   "rules": {
     "indent": 0
-  },
-  "globals": {
-    "test": false,
-    "fixture": false
   }
 }

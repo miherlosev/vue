@@ -34,3 +34,14 @@ export async function assertPoligonPoints (t, countPoint) {
 
     await t.expect(await checkPolygonPoints()).ok()
 }
+
+// NOTE: https://github.com/DevExpress/testcafe/issues/995
+export function getInnerHtml (selector) {
+    return ClientFunction(() => {
+        var el = selector()
+
+        return el && el.innerHTML
+    }, {
+        dependencies: { selector }
+    })()
+}
