@@ -3,7 +3,7 @@ npm run lint
 npm run flow
 npm run test:types
 npm run test:cover
-npm run test:e2e -- --env phantomjs
+npm run test:e2e:testcafe
 npm run test:ssr
 npm run test:weex
 
